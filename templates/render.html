@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakażenia w roku {{year}}</title>
+    <link rel="stylesheet" href="render.css">
+</head>
+<body>
+    <h1>Zakażenia w roku {{year}}</h1>
+    <div class="wrapper">
+        <img src="{{year}}-1.png" alt="wykres">
+        <img src="{{year}}-2.png" alt="wykres">
+    </div>
+    {%include year+".html"%}
+</body>
+</html>

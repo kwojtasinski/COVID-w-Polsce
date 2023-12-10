@@ -67,7 +67,7 @@ def generate_table(year):
 
     # zapisanie w htmlu
     html = df.to_html()
-    text_file = open(f"templates/{year}.html", "w") 
+    text_file = open(f"templates/{year}.html", "w", encoding="utf-8") 
     text_file.write(html) 
     text_file.close() 
 

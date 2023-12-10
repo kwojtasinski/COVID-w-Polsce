@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from flask import Flask, url_for, request, render_template
+import webbrowser
 
 pd.options.mode.chained_assignment = None
 
@@ -86,5 +87,6 @@ def index():
         return render_template("render.html", year=year)
     else:
         return render_template("main.html")
-    
+
+webbrowser.open('http://127.0.0.1:5000', new=2)
 app.run()

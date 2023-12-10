@@ -13,7 +13,7 @@ Dane przedsatwia w prostej aplikacji internetowej stworzonej przy użyciu biblio
 Korzystając z biblioteki [pyinstaller](https://github.com/pyinstaller/pyinstaller) projekt zapakowany jest w jeden plik wykonywalny by ułatwic instalację.
 
 ## Instalacja
-1. Pobrać plik i rozpakować [COVID-w-Polsce.zip](https://FlyinButter1/COVID-w-Polsce/releases/download/v1.0.0/COVID-w-Polsce.zip)
+1. Pobrać plik i rozpakować [COVID-w-Polsce.zip](https://github.com/FlyinButter1/COVID-w-Polsce/releases/download/v1.0.0/COVID-w-Polsce.zip)
 2. Uruchomić plik `main.exe`
 3. Po chwili w przeglądarce powinna otowrzyć się nowa karta
 

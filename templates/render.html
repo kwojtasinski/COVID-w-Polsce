@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zakażenia w roku {{year}}</title>
     <link rel="stylesheet" href="render.css">
+    {%if year == '2020'%}
+    <style>body {
+        width: fit-content;
+    }</style>
+    {%endif%}
 </head>
 <body>
     <h1>Zakażenia w roku {{year}}</h1>

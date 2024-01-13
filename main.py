@@ -1,16 +1,20 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from flask import Flask, url_for, request, render_template
 import webbrowser
+import streamlit as st
 
 pd.options.mode.chained_assignment = None
 
 plt.close("all")
 
 
+def generate_latest():
+    return pd.read_csv("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.csv")
+
 def generate_table(year):
     # pobranie tabeli z zakarzeniami w województwach
 
+    
     dfs = pd.read_html("https://pl.wikipedia.org/wiki/Statystyki_pandemii_COVID-19_w_Polsce", match=f"Zakażenia w województwach w {year}", thousands=" ")
     df = dfs[0]
 
@@ -50,43 +54,38 @@ def generate_table(year):
         df[column] = df[column].astype(int)
 
 
-    # generowanie wykresu zakarzeń w skali roku
-    plot = df.drop(df.tail(1).index).plot(y="Total")
-    plot.set_xlabel("Dni roku")
-    plot.set_ylabel("Nowe zakażenia")
-    plt.savefig(f'static/{year}-1.png')
+    # # generowanie wykresu zakarzeń w skali roku
+    # plot = df.drop(df.tail(1).index).plot(y="Total")
+    # plot.set_xlabel("Dni roku")
+    # plot.set_ylabel("Nowe zakażenia")
+    # plt.savefig(f'static/{year}-1.png')
 
-    plt.close("all")
+    # plt.close("all")
 
 
     # generowanie wykresu procentowego udziału województw
     s = df.iloc[-1, 1:-1]
     s.name = ''
     pie = s.plot.pie(autopct='%.1f%%')
-    plt.savefig(f'static/{year}-2.png')
 
 
-    # zapisanie w htmlu
-    html = df.to_html()
-    text_file = open(f"templates/{year}.html", "w", encoding="utf-8") 
-    text_file.write(html) 
-    text_file.close() 
+    return df
 
-generate_table('2020')
-generate_table('2021')
-generate_table('2022')
+# generate_table('2020')
+# generate_table('2021')
+# generate_table('2022')
 
 
-app = Flask("app", static_folder='static', template_folder="templates", static_url_path="/")
 
-@app.route("/")
-def index():
-    if('year' in request.args):
-        #render.html
-        year = request.args['year']
-        return render_template("render.html", year=year)
-    else:
-        return render_template("main.html")
+option = st.selectbox("Wybierz rok",
+                      pd.Series(["Latest worldwide", "Poland 2020", "Poland 2021", "Poland 2022"]))
 
-webbrowser.open('http://127.0.0.1:5000', new=2)
-app.run()
+
+if option == "Latest worldwide":
+    df = generate_latest()
+    st.write(df)
+else:
+    df = generate_table(option[7:])
+    st.write(df)
+    st.line_chart(df[:-1], y="Total", use_container_width=True)
+    st.pyplot(plt)

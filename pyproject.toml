@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "covid-w-polsce"
+version = "0.1.0"
+description = ""
+authors = ["FlyinButter1 <85359786+FlyinButter1@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.1.4"
+matplotlib = "^3.8.2"
+streamlit = "^1.30.0"
+lxml = "^5.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

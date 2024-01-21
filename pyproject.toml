@@ -13,6 +13,10 @@ streamlit = "^1.30.0"
 lxml = "^5.1.0"
 
 
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.1.14"
+black = "^23.12.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

@@ -34,7 +34,7 @@ def transform_poland_data(df, year) -> pd.DataFrame:
 
     if year == "2022":
         df.columns = df.columns.droplevel([1])
-        df = df[df["pomorskie"].str.contains("2022") is False]
+        df = df[(df["pomorskie"].str.contains("2022") == False)]
 
     # dwa rodzaje używanych myślników
     df.replace(to_replace="–", value=0, inplace=True)

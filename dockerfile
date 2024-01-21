@@ -10,7 +10,7 @@ WORKDIR /app
 
 COPY pyproject.toml poetry.lock ./
 
-RUN poetry install --without dev --no-cache
+RUN poetry install --without dev --no-cache --no-root
 
 COPY covid-w-polsce ./covid-w-polsce
 

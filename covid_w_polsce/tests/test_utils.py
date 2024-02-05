@@ -1,4 +1,4 @@
-from main import transform_poland_data, extract_poland_data
+from utils import transform_poland_data, extract_poland_data
 import pandas as pd
 
 

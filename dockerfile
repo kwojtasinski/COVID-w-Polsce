@@ -8,12 +8,12 @@ ENV POETRY_NO_INTERACTION=1 \
 
 WORKDIR /app 
 
-COPY pyproject.toml poetry.lock ./
+COPY pyproject.toml poetry.lock app.py ./
 
 RUN poetry install --without dev --no-cache --no-root
 
-COPY covid-w-polsce ./covid-w-polsce
+COPY covid_w_polsce ./covid-w-polsce
 
 EXPOSE 8501
 
-CMD ["poetry", "run", "streamlit", "run", "covid-w-polsce/main.py"]
+CMD ["poetry", "run", "streamlit", "run", "app.py"]

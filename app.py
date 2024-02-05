@@ -14,6 +14,8 @@ def display_data(option: str):
         df = extract_poland_data(year)
         df = transform_poland_data(df, year)
         st.write(df)
+
+        df.to_json(f"{year}.json")
         st.line_chart(df[:-1], y="Total", use_container_width=True)
         st.pyplot(plt)
 

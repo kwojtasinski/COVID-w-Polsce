@@ -1,8 +1,7 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-import streamlit as st
 
 pd.options.mode.chained_assignment = None
+
 
 def extract_latest_data() -> pd.DataFrame:
     return pd.read_csv(
@@ -10,7 +9,7 @@ def extract_latest_data() -> pd.DataFrame:
     )
 
 
-def extract_poland_data(year:str) -> pd.DataFrame:
+def extract_poland_data(year: str) -> pd.DataFrame:
     dfs = pd.read_html(
         "https://pl.wikipedia.org/wiki/Statystyki_pandemii_COVID-19_w_Polsce",
         match=f"Zakażenia w województwach w {year}",
@@ -19,7 +18,7 @@ def extract_poland_data(year:str) -> pd.DataFrame:
     return dfs[0]
 
 
-def transform_poland_data(df: pd.DataFrame, year:str) -> pd.DataFrame:
+def transform_poland_data(df: pd.DataFrame, year: str) -> pd.DataFrame:
     # usunięcie pustych/niepotrzebnych kolumn i wierszy
     df.columns = df.columns.droplevel([0, 1])
     df = df.iloc[:, :-7]

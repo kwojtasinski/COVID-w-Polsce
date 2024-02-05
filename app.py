@@ -2,7 +2,11 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from covid_w_polsce.utils import extract_latest_data, extract_poland_data, transform_poland_data
+from covid_w_polsce.utils import (
+    extract_latest_data,
+    extract_poland_data,
+    transform_poland_data,
+)
 
 
 def display_data(option: str):

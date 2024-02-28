@@ -21,11 +21,11 @@ def extract_poland_data(year: str) -> pd.DataFrame:
 def transform_poland_data(df: pd.DataFrame, year: str) -> pd.DataFrame:
     # usunięcie pustych/niepotrzebnych kolumn i wierszy
     df.columns = df.columns.droplevel([0, 1])
-    df = df.iloc[:, :-7]
-    df = df.drop(df.columns[[1, 2, 3]], axis=1)
-    df = df.drop(df.tail(5).index)
-    df = df.dropna()
-    df = df.reset_index(drop=True)
+    df = df.iloc[:, :-7] 
+    df = df.drop(df.columns[[1, 2, 3]], axis=1) \
+    .drop(df.tail(5).index) \
+    .dropna() \
+    .reset_index(drop=True)
     df.index += 1
 
     if year == "2022":
@@ -38,9 +38,9 @@ def transform_poland_data(df: pd.DataFrame, year: str) -> pd.DataFrame:
 
     # zamiana typu danych
     for column in df.columns:
-        if column == "Data":
-            continue
-        df[column] = df[column].astype(int)
+        if column != "Data":
+            df[column] = df[column].astype(int)
+        
 
     # dodanie kolumny i wiersza z sumowaniem
     df.loc[:, "Total"] = df.sum(numeric_only=True, axis=1)
@@ -48,9 +48,9 @@ def transform_poland_data(df: pd.DataFrame, year: str) -> pd.DataFrame:
 
     # znowu zmiana typu danych na int (zmieniaja sie na float?)
     for column in df.columns:
-        if column == "Data":
-            continue
-        df[column] = df[column].astype(int)
+        if column != "Data":
+            df[column] = df[column].astype(int)
+        
 
     # generowanie wykresu procentowego udziału województw
     s = df.iloc[-1, 1:-1]

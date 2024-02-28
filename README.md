@@ -1,4 +1,4 @@
-# COVID-w-Polsce
+# COVID-w-Polsce (do aktualizacji)
 ![obraz](https://github.com/FlyinButter1/COVID-w-Polsce/assets/85359786/4f84dd61-7af8-4916-8c19-b8e18296b8b5)
 
 ## Cel

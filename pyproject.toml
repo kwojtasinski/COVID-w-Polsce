@@ -12,6 +12,8 @@ matplotlib = "^3.8.2"
 streamlit = "^1.30.0"
 lxml = "^5.1.0"
 azure-functions = "^1.18.0"
+azure-storage-blob = "^12.19.1"
+azure-identity = "^1.15.0"
 
 
 [tool.poetry.group.dev.dependencies]

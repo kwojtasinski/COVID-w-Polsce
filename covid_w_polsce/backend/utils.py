@@ -52,9 +52,4 @@ def transform_poland_data(df: pd.DataFrame, year: str) -> pd.DataFrame:
             df[column] = df[column].astype(int)
         
 
-    # generowanie wykresu procentowego udziału województw
-    s = df.iloc[-1, 1:-1]
-    s.name = ""
-    s.plot.pie(autopct="%.1f%%")
-
     return df

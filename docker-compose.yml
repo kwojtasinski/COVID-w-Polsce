@@ -1,9 +1,44 @@
 version: "3"
 
 services:
-  app:
+  backend:
+    hostname: backend
     build:
-      dockerfile: dockerfile
+      dockerfile: ./covid_w_polsce/backend/dockerfile
+      context: .
+    ports:
+      - "8000:8000"
+    environment: 
+      - AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://azurite:10000/devstoreaccount1;
+      - STORAGE_CONTAINER=test-container
+    networks:
+      - default
+
+  frontend:
+    build:
+      dockerfile: ./covid_w_polsce/frontend/dockerfile
       context: .
     ports:
       - "8501:8501"
+    networks:
+      - default
+    
+
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    hostname: azurite
+    ports: 
+      - 10000:10000 
+      - 10001:10001 
+      - 10002:10002
+    networks:
+      - default
+    volumes:
+      - azurite:/data
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  azurite:

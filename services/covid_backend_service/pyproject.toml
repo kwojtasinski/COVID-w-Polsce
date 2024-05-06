@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "covid-backend"
+version = "0.1.0"
+description = ""
+authors = ["Kacper Wojtasinski <k0wojtasinski@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.111.0"
+pandas = "^2.2.2"
+uvicorn = "^0.29.0"
+lxml = "^5.2.1"
+httpx = "^0.27.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.0"
+black = "^24.4.2"
+ruff = "^0.4.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

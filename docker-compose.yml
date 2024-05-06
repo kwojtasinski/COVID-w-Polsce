@@ -4,10 +4,10 @@ services:
   backend:
     hostname: backend
     build:
-      dockerfile: ./covid_w_polsce/backend/dockerfile
-      context: .
+      dockerfile: Dockerfile
+      context: ./services/covid_backend_service
     ports:
-      - "8000:8000"
+      - "8080:8000"
     environment: 
       - AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://azurite:10000/devstoreaccount1;
       - STORAGE_CONTAINER=test-container
